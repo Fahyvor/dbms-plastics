@@ -1,0 +1,36 @@
+.header-nav {
+    background-color: var(--color-bg);
+}
+
+.body {
+    background-image: url('../assets/backgroundImage.png');
+    background-repeat: no-repeat;
+    object-fit: cover;
+}
+
+.body-shadow {
+    background-color: rgba(2, 50, 33, 0.45);
+    /* height: 100vh; */
+}
+
+.buy-and-sell p {
+    background-color: var(--color-primary);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+}
+
+.nav-links a:hover {
+    border-bottom: 2px solid var(--color-bg);
+}
+
+.mobile-nav-links {
+    margin-left: -83.5%;
+}
+
+.nav-links a {
+    color: var(--color-bg);
+}
+
+.nav-contacts {
+    color: var(--color-bg);
+}
