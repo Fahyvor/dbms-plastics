@@ -1,0 +1,29 @@
+const express = require('express')
+const mongoose = require('mongoose')
+
+const productSchema = new mongoose.Schema (
+    {
+        waste: {
+            type: String,
+            required: true,
+        },
+        owner: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        size: {
+            type: Number,
+            required: true,
+        },
+        price: {
+            type: Number,
+            required: true,
+        },
+    },
+    {timestamps: true}
+);
+
+const Product = mongoose.model('Product', productSchema)
+
+module.exports = Product
