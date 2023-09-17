@@ -1,0 +1,36 @@
+.body-header {
+    background-color: var(--color-bg);
+}
+
+th {
+    width: 14%;
+    background-color: var(--color-bg);
+    color: var(--color-white);
+    padding: 0.3rem;
+    border: 1px solid var(--color-white);
+}
+
+@media screen and (max-width: 800px) {
+    .body-header {
+        display: flex;
+        flex-direction: column;
+    }
+    th {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    table {
+        display: flex !important;
+    }
+
+    td {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100%;
+        padding: 0.3rem;
+        border: 1px solid var(--color-white);
+        width: 100%;
+    }
+}

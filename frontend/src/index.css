@@ -5,6 +5,7 @@
 :root{
   --color-bg: rgb(2, 50, 33);
   --color-primary: rgb(178, 99, 15);
+  --color-white: rgb(255, 255, 255);
 }
 
 body {

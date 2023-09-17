@@ -4,26 +4,26 @@ const mongoose = require('mongoose')
 const productSchema = new mongoose.Schema (
     {
         waste: {
-            type: String,
+            type:String,
             required: true,
         },
         owner: {
-            type: String,
+            type:String,
             required: true,
             unique: true,
         },
         size: {
-            type: Number,
+            type:Number,
             required: true,
         },
         price: {
-            type: Number,
+            type:Number,
             required: true,
-        },
+        }
     },
     {timestamps: true}
 );
 
-const Product = mongoose.model('Product', productSchema)
+module.exports = mongoose.model('Product', productSchema)
 
-module.exports = Product
+// module.exports = Product
