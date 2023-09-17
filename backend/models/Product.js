@@ -10,7 +10,6 @@ const productSchema = new mongoose.Schema (
         owner: {
             type:String,
             required: true,
-            unique: true,
         },
         size: {
             type:Number,
