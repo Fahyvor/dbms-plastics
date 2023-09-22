@@ -12,13 +12,14 @@ const Dashboard = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-            axiosInstance.get('/getplastics').then((response) => {
-            const allProducts = response.products.sort((p1, p2) => {
-                return p1.id - p2.id;
-            });
+        axiosInstance.get('/getproducts').then((response) => {
+            const allProducts = response.data.sort((p1, p2) => p1.id - p2.id);
             setProducts(allProducts);
-        });
-    }, [])
+        })
+        .catch((error) => {
+            console.log("Error fetching data", error)
+        })
+    }, []);
   return (
     <div className='w-full text-center pt-4'>
         <div className='dashboard-header'>
@@ -70,7 +71,7 @@ const Dashboard = () => {
             <>
             <table className='max-sm:flex max-sm:gap-4'>
                 <tr className='body-header'>
-                    <th>#</th>
+                    {/* <th>#</th> */}
                     <th>Sellers Name</th>
                     <th>Product Selling</th>
                     <th>Product Cost</th>
@@ -80,12 +81,12 @@ const Dashboard = () => {
                 </tr>
 
             {products.map((product, index) => (
-                <tr key={index}>
-                    <td>1001</td>
-                    <td>{product.name}</td>
-                    <td>Polymer Plastic</td>
-                    <td>$25</td>
-                    <td>250Kg</td>
+                <tr key={index} >
+                    {/* <td>{product.index}</td> */}
+                    <td>{product.owner}</td>
+                    <td>{product.waste}</td>
+                    <td>{product.price}</td>
+                    <td>{product.size}</td>
                     <td>Obinna</td>
                     <td>Plastic</td>
                 </tr>
