@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './dashboard.css'
 import { GiNuclearWaste } from 'react-icons/gi'
 import { BsFillPeopleFill } from 'react-icons/bs'
+import axios from 'axios'
+
+const axiosInstance = axios.create({
+    baseURL: 'https://dbms-plastics.onrender.com',
+});
 
 const Dashboard = () => {
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+            axiosInstance.get('/getplastics').then((response) => {
+            const allProducts = response.products.sort((p1, p2) => {
+                return p1.id - p2.id;
+            });
+            setProducts(allProducts);
+        });
+    }, [])
   return (
     <div className='w-full text-center pt-4'>
         <div className='dashboard-header'>
@@ -52,6 +67,7 @@ const Dashboard = () => {
 
         <div className='dashboard-body w-full flex
         flex-col px-4 max-sm:mt-7 text-left'>
+            <>
             <table className='max-sm:flex max-sm:gap-4'>
                 <tr className='body-header'>
                     <th>#</th>
@@ -63,16 +79,19 @@ const Dashboard = () => {
                     <th>Item Bought</th>
                 </tr>
 
-                <tr>
+            {products.map((product, index) => (
+                <tr key={index}>
                     <td>1001</td>
-                    <td>Samuel</td>
+                    <td>{product.name}</td>
                     <td>Polymer Plastic</td>
                     <td>$25</td>
                     <td>250Kg</td>
                     <td>Obinna</td>
                     <td>Plastic</td>
                 </tr>
+            ))}
             </table>
+            </>
         </div>
     </div>
   )

@@ -1,13 +1,37 @@
-import React, {useState} from 'react'
+import React, {useRef, useState} from 'react'
 import './sellers.css'
 import { AiOutlineBars } from 'react-icons/ai'
 import Logo from '../assets/logo.png'
+import axios from 'axios'
+
+const axiosInstance = axios.create({
+    baseURL: 'https://dbms-plastics.onrender.com',
+});
 
 const SellWaste = () => {
     const [show, setShow] = useState(false);
 
-    const confirmSale = (e) => {
-        // e.preventDefault;
+    const waste = useRef();
+    const owner = useRef();
+    const size = useRef();
+    const price = useRef()
+
+    const confirmSale = async (e) => {
+        e.preventDefault();
+
+        const product = {
+            waste: waste.current.value,
+            owner: owner.current.value,
+            size: size.current.value,
+            price: price.current.value
+        }
+        
+        try {
+            await axiosInstance.post("/api/product", product);
+            console.log('Product successfully Registered')
+        } catch (error) {
+            console.log('Product was not registered', error)
+        }
     }
 
   return (
@@ -39,15 +63,19 @@ const SellWaste = () => {
         max-sm:w-11/12 items-center gap-8 mt-8'
         onSubmit={confirmSale}>
             <input name='waste' type='text' placeholder='Waste(eg. Plastic)'
+            ref={waste}
             required className='bg-gray-100 p-4 w-full'/>
 
             <input name='owner' type='text' placeholder='Owner of the waste'
+            ref={owner}
             required className='bg-gray-100 p-4 w-full'/>
 
             <input name='size' type='text' placeholder='Size in Kg'
+            ref={size}
             required className='bg-gray-100 p-4 w-full'/>
 
             <input name='price' type='type' placeholder='Price'
+            ref={price}
             required className='bg-gray-100 p-4 w-full'/>
 
             <button type='submit' className='bg-lime-950
@@ -62,3 +90,6 @@ const SellWaste = () => {
 }
 
 export default SellWaste
+
+// api = https://dbms-plastics.onrender.com
+// https://dbms-plastics.onrender.com/getproducts
