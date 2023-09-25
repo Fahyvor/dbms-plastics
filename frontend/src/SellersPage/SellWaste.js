@@ -28,7 +28,12 @@ const SellWaste = () => {
         
         try {
             await axiosInstance.post("/api/product", product);
-            console.log('Product successfully Registered')
+            console.log('Product successfully Registered');
+
+            waste.current.value = '';
+            owner.current.value = '';
+            size.current.value = '';
+            price.current.value = '';
         } catch (error) {
             console.log('Product was not registered', error)
         }

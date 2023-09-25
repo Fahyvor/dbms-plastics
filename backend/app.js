@@ -36,7 +36,7 @@ app.post('/api/product', async (req, res) => {
     const { waste, owner, size, price} = req.body;
     try {
         const newProduct = new Product({ 
-            waste,
+            waste
             owner,
             size,
             price

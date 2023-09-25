@@ -87,8 +87,8 @@ const Dashboard = () => {
                     <td>{product.waste}</td>
                     <td>{product.price}</td>
                     <td>{product.size}</td>
-                    <td>Obinna</td>
-                    <td>Plastic</td>
+                    <td>{product.seller}</td>
+                    <td>{product.SellerAmount}</td>
                 </tr>
             ))}
             </table>
