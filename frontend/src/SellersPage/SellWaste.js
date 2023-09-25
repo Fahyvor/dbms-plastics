@@ -13,6 +13,8 @@ const SellWaste = () => {
 
     const waste = useRef();
     const owner = useRef();
+    const email = useRef();
+    const phone = useRef();
     const size = useRef();
     const price = useRef()
 
@@ -22,6 +24,8 @@ const SellWaste = () => {
         const product = {
             waste: waste.current.value,
             owner: owner.current.value,
+            email: owner.current.value,
+            phone: owner.current.value,
             size: size.current.value,
             price: price.current.value
         }
@@ -32,6 +36,8 @@ const SellWaste = () => {
 
             waste.current.value = '';
             owner.current.value = '';
+            email.current.value = '';
+            phone.current.value = '';
             size.current.value = '';
             price.current.value = '';
         } catch (error) {
@@ -73,6 +79,15 @@ const SellWaste = () => {
 
             <input name='owner' type='text' placeholder='Owner of the waste'
             ref={owner}
+            required className='bg-gray-100 p-4 w-full'/>
+
+            <input name='email' type='email' placeholder='Email of the seller'
+            ref={email}
+            required className='bg-gray-100 p-4 w-full'/>
+
+
+            <input name='phone' type='ext' placeholder='Phone number of the seller'
+            ref={phone}
             required className='bg-gray-100 p-4 w-full'/>
 
             <input name='size' type='text' placeholder='Size in Kg'
